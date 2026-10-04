@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>泉山塁威 Rui Izumiyama</title>
+<meta name="description" content="泉山塁威（いずみやま るい）公式サイト。日本大学理工学部建築学科准教授、一般社団法人ソトノバ共同代表理事、PlacemakingX日本リーダー。パブリックスペースから都市を変える研究と実践。">
+<link rel="canonical" href="https://ruiizumiyama.jp/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="泉山塁威 Rui Izumiyama">
+<meta property="og:description" content="日本大学理工学部建築学科准教授／一般社団法人ソトノバ共同代表理事・編集長／PlacemakingX日本リーダー。パブリックスペースから都市を変える研究と実践。">
+<meta property="og:url" content="https://ruiizumiyama.jp/">
+<meta property="og:image" content="https://ruiizumiyama.jp/images/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@RuiIZUMIYAMA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "泉山塁威",
+  "alternateName": ["Rui Izumiyama", "いずみやま るい"],
+  "url": "https://ruiizumiyama.jp/",
+  "birthPlace": "札幌市",
+  "jobTitle": "准教授",
+  "worksFor": [
+    {"@type": "CollegeOrUniversity", "name": "日本大学理工学部建築学科"},
+    {"@type": "Organization", "name": "一般社団法人ソトノバ"}
+  ],
+  "alumniOf": [{"@type": "CollegeOrUniversity", "name": "明治大学"}, {"@type": "CollegeOrUniversity", "name": "日本大学"}],
+  "knowsAbout": ["タクティカル・アーバニズム", "プレイスメイキング", "エリアマネジメント", "パブリックスペース", "ウォーカブルシティ", "パークレット"],
+  "sameAs": [
+    "https://researchmap.jp/ruilouis",
+    "https://orcid.org/0000-0001-9466-5481",
+    "https://scholar.google.com/citations?user=dQZv19sAAAAJ",
+    "https://ja.wikipedia.org/wiki/泉山塁威",
+    "https://note.com/ruilouis",
+    "https://x.com/RuiIZUMIYAMA",
+    "https://www.instagram.com/ruilouis/",
+    "https://urbandesignplanning.jp/izumiyama/"
+  ]
+}
+// slider
+(function(){
+  const s=[...document.querySelectorAll('.slide')];if(!s.length)return;
+  let i=0,timer=null;const cur=document.getElementById('cur');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function go(n){s[i].classList.remove('is-on');i=(n+s.length)%s.length;s[i].classList.add('is-on');cur.textContent=i+1;}
+  function play(){if(reduce)return;stop();timer=setInterval(()=>go(i+1),6000);}
+  function stop(){clearInterval(timer);}
+  document.getElementById('next').onclick=()=>{go(i+1);play();};
+  document.getElementById('prev').onclick=()=>{go(i-1);play();};
+  const st=document.querySelector('.stage');st.addEventListener('mouseenter',stop);st.addEventListener('mouseleave',play);
+  st.addEventListener('focusin',stop);
+  let x0=null;st.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  st.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));play();}x0=null;});
+  play();
+})();
+// media more
+document.getElementById('media-more').addEventListener('click',e=>{document.querySelectorAll('.more-item').forEach(li=>li.hidden=false);e.currentTarget.remove();});
+// copy
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.target);
+  const done=()=>{b.textContent='コピーしました';b.classList.add('done');setTimeout(()=>{b.textContent='コピー';b.classList.remove('done');},2000);};
+  navigator.clipboard.writeText(el.textContent).then(done).catch(()=>{const r=document.createRange();r.selectNodeContents(el);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent='選択しました';});
+}));
+</script>
+<style>
+/* 建築書の組版：白い紙面、明朝の見出し、縦組みの名前。装飾はせず、余白と罫だけで構成する */
+:root{
+  --paper:#ffffff;
+  --sumi:#1a1a1a;
+  --gray:#6b6b6b;
+  --rule:#d9d9d9;
+  --tint:#f2f2f0;
+  --link:#1a1a1a;
+  --mark:#d9541e;
+  --mincho:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --gothic:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#141414;--sumi:#ececea;--gray:#a3a3a0;--rule:#333;--tint:#1f1f1f;--link:#ececea;--mark:#f07a45;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141414;--sumi:#ececea;--gray:#a3a3a0;--rule:#333;--tint:#1f1f1f;--link:#ececea;--mark:#f07a45;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--sumi);font-family:var(--gothic);font-size:15px;line-height:2;letter-spacing:.04em}
+a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:5px}
+a:hover{color:var(--mark)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+.page{max-width:1080px;margin-inline:auto;padding-inline:clamp(20px,5vw,56px)}
+
+header.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px 24px;flex-wrap:wrap;padding-block:28px}
+header.top .site{font-family:var(--mincho);font-weight:700;font-size:15px;text-decoration:none;letter-spacing:.12em}
+header.top nav{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:13px}
+header.top nav a{text-decoration:none;color:var(--gray)}
+header.top nav a:hover{color:var(--sumi)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,48px);padding-block:clamp(16px,3vw,32px) clamp(56px,9vw,112px)}
+.hero h1{writing-mode:vertical-rl;font-family:var(--mincho);font-weight:800;font-size:clamp(48px,7vw,96px);letter-spacing:.18em;line-height:1;margin:0}
+.hero h1 rt{font-size:.16em;letter-spacing:.3em;font-weight:500}
+.stage{position:relative;min-width:0}
+.slides{list-style:none;margin:0;padding:0;position:relative;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:#111}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;background:radial-gradient(120% 90% at 70% 20%,color-mix(in srgb,var(--tone) 70%,#fff 10%),var(--tone) 55%,#0d0d0d)}
+.slide.is-on{opacity:1;z-index:1}
+.slide-link{position:absolute;inset:0;display:block;color:#fff;text-decoration:none}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 7s linear}
+.slide.is-on img{transform:scale(1)}
+.slide-link::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.65))}
+.cap{position:absolute;left:clamp(16px,3vw,32px);right:clamp(16px,3vw,32px);bottom:clamp(14px,2.6vw,28px);z-index:2;display:grid;gap:2px;color:#fff}
+.cap .kind{font-size:11px;letter-spacing:.24em;opacity:.8}
+.cap strong{font-family:var(--mincho);font-size:clamp(18px,2.6vw,30px);line-height:1.4;letter-spacing:.06em}
+.cap span:last-child{font-size:13px;opacity:.85}
+.play{position:absolute;left:50%;top:44%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.9);z-index:2}
+.play::before{content:"";position:absolute;left:29px;top:22px;border-left:20px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent}
+.slide-link:hover .play{background:rgba(255,255,255,.15)}
+.ctrl{display:flex;align-items:center;gap:16px;justify-content:flex-end;padding-top:12px;font-size:13px;color:var(--gray)}
+.ctrl button{font:inherit;font-size:16px;background:none;border:1px solid var(--rule);color:var(--sumi);width:40px;height:32px;cursor:pointer}
+.ctrl button:hover{border-color:var(--sumi)}
+.count{font-family:var(--mincho);font-variant-numeric:tabular-nums}
+.count b{color:var(--sumi)}
+.hero .text{grid-column:2;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end;margin-top:clamp(20px,3vw,36px)}
+.hero .lead{font-family:var(--mincho);font-weight:700;font-size:clamp(22px,2.8vw,32px);line-height:1.75;margin:0;letter-spacing:.08em}
+.hero .lead .m{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--mark) 35%,transparent) 62%)}
+.hero .en{font-family:var(--mincho);font-size:15px;color:var(--gray);margin:0 0 14px;letter-spacing:.06em}
+.hero .roles{font-size:14px;line-height:2;margin:0}
+@media (max-width:860px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero h1{writing-mode:horizontal-tb;font-size:44px;letter-spacing:.14em}
+  .hero h1 rt{font-size:.3em}
+  .hero .text{grid-column:1;grid-template-columns:minmax(0,1fr)}
+  .slides{aspect-ratio:4/5}
+}
+
+/* section */
+section{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--sumi)}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin:0 0 clamp(28px,4vw,48px)}
+.sec-head h2{font-family:var(--mincho);font-weight:700;font-size:clamp(24px,3vw,30px);margin:0;letter-spacing:.14em}
+.sec-head span{font-family:var(--mincho);font-style:italic;color:var(--gray);font-size:15px;letter-spacing:.04em}
+.cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(28px,5vw,72px)}
+@media (max-width:860px){.cols{grid-template-columns:minmax(0,1fr)}}
+p{margin:0 0 1.2em;max-width:38em}
+.note{color:var(--gray);font-size:13px}
+
+dl.cv{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 20px;font-size:14px}
+dl.cv dt{font-size:13px;font-family:var(--mincho);font-variant-numeric:tabular-nums;color:var(--gray);white-space:nowrap}
+dl.cv dd{margin:0}
+.fields{font-family:var(--mincho);font-size:17px;line-height:2.2;margin:0}
+
+.side{display:grid;gap:10px;align-content:start}
+.minih{font-family:var(--mincho);font-size:16px;margin:8px 0 4px;letter-spacing:.12em}
+.side .minih:first-child{margin-top:0}
+.titles{font-size:14px;margin:0}
+ul.plain{margin:0 0 16px;padding:0;list-style:none;font-size:14px;line-height:1.9}
+/* projects */
+.proj{margin:0;padding:0;list-style:none;columns:2 300px;column-gap:56px}
+.proj li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;font-size:14px;line-height:1.8}
+.proj .wy{font-family:var(--mincho);color:var(--gray);font-variant-numeric:tabular-nums}
+
+/* papers */
+.filter{display:flex;gap:8px;margin:0 0 32px;flex-wrap:wrap}
+.filter button{font:inherit;font-size:13px;background:none;border:1px solid var(--rule);color:var(--gray);padding:4px 16px;cursor:pointer}
+.filter button[aria-pressed="true"]{border-color:var(--sumi);color:var(--sumi)}
+.year{display:grid;grid-template-columns:96px minmax(0,1fr);gap:24px;padding:20px 0;border-top:1px solid var(--rule)}
+.year > h3{font-family:var(--mincho);font-weight:700;font-size:28px;margin:0;line-height:1.3;font-variant-numeric:tabular-nums}
+.year ol{margin:0;padding:0;list-style:none;display:grid;gap:22px}
+.paper .t{font-family:var(--mincho);font-weight:700;font-size:16px;line-height:1.8;letter-spacing:.04em}
+.paper .a,.paper .j{font-size:13px;color:var(--gray);line-height:1.8}
+.paper .a b{color:var(--sumi);font-weight:700}
+.paper .tag{font-size:11px;border:1px solid var(--mark);color:var(--mark);padding:0 6px;margin-left:8px;letter-spacing:.06em;white-space:nowrap}
+@media (max-width:560px){.year{grid-template-columns:minmax(0,1fr);gap:8px}}
+
+/* media */
+.outlets{font-family:var(--mincho);font-size:17px;line-height:2;margin:0 0 28px;max-width:none}
+.medialist{margin:0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+.medialist li{display:grid;grid-template-columns:80px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.medialist time{font-family:var(--mincho);color:var(--gray);font-variant-numeric:tabular-nums;font-size:14px}
+.medialist .mt{font-size:15px;line-height:1.8}
+.medialist .mm{font-size:13px;color:var(--gray)}
+.showall{margin-top:20px;font:inherit;font-size:14px;background:none;border:1px solid var(--sumi);color:var(--sumi);padding:8px 24px;cursor:pointer}
+/* kit */
+.kit{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);margin-top:28px}
+@media (max-width:860px){.kit{grid-template-columns:minmax(0,1fr)}}
+.bios{display:grid;gap:28px}
+.bio{border-top:1px solid var(--sumi);padding-top:12px}
+.bio-h{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.bio-h h3{font-family:var(--mincho);font-size:16px;margin:0;letter-spacing:.08em}
+.bio-h .n{font-size:12px;color:var(--gray);font-variant-numeric:tabular-nums}
+.copy{margin-left:auto;font:inherit;font-size:12px;background:none;border:1px solid var(--rule);color:var(--sumi);padding:2px 14px;cursor:pointer}
+.copy.done{border-color:var(--mark);color:var(--mark)}
+.bio p{font-size:14px;line-height:1.95;margin:0;max-width:none}
+.photos h3{font-family:var(--mincho);font-size:16px;margin:0 0 12px;letter-spacing:.08em;border-top:1px solid var(--sumi);padding-top:12px}
+.ph-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ph-grid figure{margin:0}
+.ph{aspect-ratio:3/4;max-width:100%;background:var(--tone);position:relative;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph-grid figcaption{font-size:12px;color:var(--gray);margin-top:6px}
+.photos .go{display:inline-block;margin:18px 0 14px;border:1px solid var(--sumi);padding:12px 24px;text-decoration:none;font-weight:700;font-size:14px}
+.photos .go:hover{background:var(--sumi);color:var(--paper)}
+.rules{margin:0;padding:0;list-style:none;font-size:13px;color:var(--gray);display:grid;gap:4px}
+.rules li::before{content:"・"}
+/* books */
+.books{margin:0;padding:0;list-style:none}
+.books li{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.books .y{font-family:var(--mincho);color:var(--gray);font-variant-numeric:tabular-nums}
+.books .b{font-family:var(--mincho);font-weight:700;font-size:17px}
+.books .p{font-size:13px;color:var(--gray);text-align:right}
+@media (max-width:560px){.books li{grid-template-columns:52px minmax(0,1fr)}.books .p{grid-column:2;text-align:left}}
+
+dl.awards{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 28px}
+dl.awards dt{font-family:var(--mincho);font-weight:700;font-variant-numeric:tabular-nums}
+dl.awards dd{margin:0}
+dl.awards .org{display:block;font-size:13px;color:var(--gray)}
+
+.links{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px}
+.contact p{max-width:34em}
+.contact .go{display:inline-block;margin-top:12px;border:1px solid var(--sumi);padding:14px 32px;text-decoration:none;font-weight:700;letter-spacing:.1em}
+.contact .go:hover{background:var(--sumi);color:var(--paper)}
+footer{border-top:1px solid var(--sumi);padding-block:28px;font-size:12px;color:var(--gray);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header class="top">
+    <a class="site" href="#">泉山塁威</a>
+    <nav aria-label="サイト内">
+      <a href="#profile">プロフィール</a>
+      <a href="#projects">プロジェクト</a>
+      <a href="#papers">論文</a>
+      <a href="#books">著書</a>
+      <a href="#awards">受賞</a>
+      <a href="#media">メディア</a>
+      <a href="#kit">メディアキット</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1><ruby>泉山塁威<rt>いずみやまるい</rt></ruby></h1>
+    <div class="stage" aria-roledescription="カルーセル" aria-label="プロジェクトと映像">
+      <ul class="slides">
+      <li class="slide is-on" style="--tone:#3d5a3a" aria-roledescription="スライド" aria-label="1 / 6">
+        <div class="slide-link"><img src="images/parkingday.jpg" alt="" loading="eager" onerror="this.remove()">
+        <div class="cap"><span class="kind">PROJECT</span><strong>PARK(ing) Day Japan</strong><span>2017– ／ 路上駐車スペースを公園に</span></div></div>
+      </li><li class="slide" style="--tone:#2c3b4f" aria-roledescription="スライド" aria-label="2 / 6">
+        <a class="slide-link" href="https://www.youtube.com/watch?v=YAne1BA7UHA" aria-label="都市の贈り物、公開空地（YouTubeで見る）"><img src="https://i.ytimg.com/vi/YAne1BA7UHA/maxresdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play" aria-hidden="true"></span>
+        <div class="cap"><span class="kind">VIDEO</span><strong>都市の贈り物、公開空地</strong><span>2025 ／ D&#x27;LIVE ドキュメンタリー（韓国）</span></div></a>
+      </li><li class="slide" style="--tone:#5a3b2a" aria-roledescription="スライド" aria-label="3 / 6">
+        <div class="slide-link"><img src="images/akihabara.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <div class="cap"><span class="kind">PROJECT</span><strong>マーケットストリート社会実験 in 秋葉原ジャンク通り</strong><span>2024 ／ 秋葉原ウォーカブルプロジェクト</span></div></div>
+      </li><li class="slide" style="--tone:#36503f" aria-roledescription="スライド" aria-label="4 / 6">
+        <div class="slide-link"><img src="images/ikebukuro.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <div class="cap"><span class="kind">PROJECT</span><strong>池袋駅東口グリーン大通り オープンカフェ社会実験</strong><span>2014–2015 ／ 東京都豊島区</span></div></div>
+      </li><li class="slide" style="--tone:#463a52" aria-roledescription="スライド" aria-label="5 / 6">
+        <a class="slide-link" href="https://www.youtube.com/watch?v=VODiHZiSoSs" aria-label="パークミュージアムをつくる楽しさ（YouTubeで見る）"><img src="https://i.ytimg.com/vi/VODiHZiSoSs/maxresdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play" aria-hidden="true"></span>
+        <div class="cap"><span class="kind">VIDEO</span><strong>パークミュージアムをつくる楽しさ</strong><span>新しい建築の楽しさ2020s展 特別企画</span></div></a>
+      </li><li class="slide" style="--tone:#4a4a2e" aria-roledescription="スライド" aria-label="6 / 6">
+        <div class="slide-link"><img src="images/placemakingweek.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <div class="cap"><span class="kind">PROJECT</span><strong>Placemaking Week JAPAN</strong><span>2020– ／ プレイスメイキングの全国ネットワーク</span></div></div>
+      </li>
+      </ul>
+      <div class="ctrl">
+        <button type="button" id="prev" aria-label="前へ">←</button>
+        <span class="count"><b id="cur">1</b> / 6</span>
+        <button type="button" id="next" aria-label="次へ">→</button>
+      </div>
+    </div>
+    <div class="text">
+      <p class="lead">パブリックスペースから、<br>都市と<span class="m">エリアマネジメント</span>を<br>変えていく。</p>
+      <div>
+        <p class="en">Rui Izumiyama, Ph.D.<br>Urban Planner / Urban Designer / Tactical Urbanist</p>
+        <p class="roles">日本大学理工学部建築学科 准教授<br>一般社団法人ソトノバ 共同代表理事・編集長<br>PlacemakingX 日本リーダー</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="profile">
+    <div class="sec-head"><h2>プロフィール</h2><span>Profile</span></div>
+    <div class="cols">
+      <div>
+        <p>泉山塁威は、研究と実践を横断しながらパブリックスペースから都市を変える都市計画家・都市デザイナー、そして「都市戦術家（Tactical Urbanist）」である。日本大学理工学部建築学科准教授として都市計画研究室（泉山ゼミ）を主宰するかたわら、日本最大級のパブリックスペース専門メディア、コミュニティを運営、プロジェクトを展開する一般社団法人ソトノバの共同代表理事・編集長、世界のプレイスメイキング・ネットワークPlacemakingXの日本リーダーを務める。過去10年以上にわたり自治体・企業・業界団体などでの講演は700回を超え、ABEMA PRIME、TOKYO MX、日本経済新聞、読売新聞、Forbes JAPAN、東洋経済、商店建築など、テレビ・新聞・雑誌・ウェブメディアへの出演・掲載も多数。日経アーキテクチュア「編集部が選ぶ建築人2021」、「編集部が選ぶ建築人（50）」に選出されるなど、日本のパブリックスペース活用のムーブメントを牽引してきた。</p>
+        <p>マイク・ライドンらが提唱するタクティカル・アーバニズムをいち早く日本に紹介し、『タクティカル・アーバニズム：小さなアクションから都市を大きく変える』（学芸出版社、2021年）としてまとめたほか、Park(ing)Day Japanやプレイスメイキングの普及活動はグッドデザイン賞2021W受賞。研究では、公開空地活用、パークレット、ほこみち（歩行者利便増進道路）、Park-PFI、エリアマネジメントなど公共空間活用の制度とマネジメント、社会実験とアクティビティ評価手法を対象に、全国調査と国際比較を軸とした査読論文を多数発表し、International Parklet Symposium 2024ではBest Abstract Proposalを受賞。Area Management Research Awardも複数回受賞（2025,2023,2022）している。Institute of Place Management Fellow、City Space Architecture、Market Cities Networkの会員として、プレイスメイキング研究・実践の国際ネットワークにも参画する。</p>
+        <p>1984年、北海道札幌市生まれ。日本大学大学院理工学研究科不動産科学専攻博士前期課程修了（2009年）、明治大学大学院理工学研究科建築学専攻博士後期課程修了（2015年）。アルキメディア設計研究所、明治大学理工学部建築学科助手・助教、東京大学先端科学技術研究センター助教、日本大学理工学部建築学科助教を経て、2023年より現職。現在は、中野駅周辺エリアプラットフォーム顧問専門家、秋葉原タウンマネジメント株式会社ウォーカブルエリアマネジメントアドバイザーなどとして、研究室の学生とともに全国のまちの現場に立つ。国内外の都市を訪れ、アイレベルからパブリックスペースを撮り続けている。</p>
+      </div>
+      <div class="side">
+        <h3 class="minih">肩書き</h3>
+        <p class="titles">都市戦術家（Tactical Urbanist）／博士（工学）／認定都市プランナー／教育士（工学・技術）</p>
+        <ul class="plain">
+          <li>日本大学理工学部建築学科准教授（都市計画研究室・泉山ゼミ 主宰）</li>
+          <li>一般社団法人ソトノバ共同代表理事・編集長</li>
+          <li>一般社団法人エリアマネジメントラボ監事</li>
+          <li>中野駅周辺エリアプラットフォーム顧問専門家</li>
+          <li>秋葉原タウンマネジメント株式会社ウォーカブルエリアマネジメントアドバイザー</li>
+          <li>青山学院大学総合文化政策学部非常勤講師</li>
+          <li>PlacemakingX Regional Network Leader, Japan</li>
+          <li>Institute of Place Management Fellow</li>
+          <li>City Space Architecture会員</li>
+          <li>Market Cities Network会員</li>
+        </ul>
+        <h3 class="minih">略歴</h3>
+        <dl class="cv">
+          <dt>1984</dt><dd>北海道札幌市生まれ</dd>
+          <dt>2007</dt><dd>日本大学理工学部建築学科卒業（都市計画研究室）</dd>
+          <dt>2009</dt><dd>日本大学大学院理工学研究科不動産科学専攻博士前期課程修了（都市計画研究室）</dd>
+          <dt>2009–2012</dt><dd>アルキメディア設計研究所</dd>
+          <dt>2012–2015</dt><dd>明治大学理工学部建築学科助手</dd>
+          <dt>2014–2018</dt><dd>一般社団法人パブリック・プレイス・パートナーズ共同代表理事</dd>
+          <dt>2015</dt><dd>明治大学大学院理工学研究科建築学専攻博士後期課程修了（建築都市デザイン研究室）</dd>
+          <dt>2016–2017</dt><dd>明治大学理工学部建築学科助教</dd>
+          <dt>2017–2020</dt><dd>東京大学先端科学技術研究センター助教</dd>
+          <dt>2018–</dt><dd>一般社団法人ソトノバ共同代表理事（法人名改称）</dd>
+          <dt>2020–2023</dt><dd>日本大学理工学部建築学科助教（都市計画研究室（泉山ゼミ）主宰）</dd>
+          <dt>2023–</dt><dd>日本大学理工学部建築学科准教授（都市計画研究室（泉山ゼミ）主宰）</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><h2>プロジェクト</h2><span>Projects</span></div>
+    <ul class="proj">
+      <li><span class="wy">2026</span>博多まちづくりガイドライン2026 未来ビジョン2040</li>
+      <li><span class="wy">2026</span>中野南口のまちづくりを考える会 2025年度年間活動報告書</li>
+      <li><span class="wy">2026</span>Well-Moving City SAPPORO 2045 ビジョン</li>
+      <li><span class="wy">2025</span>ナカノミナミ・ピクニックデイ〜食べて・遊んで・アートに触れよう〜</li>
+      <li><span class="wy">2025</span>ササハタハツエリアビジョンレビューブック2025</li>
+      <li><span class="wy">2025</span>みどりによる地域価値向上に向けた、多様な主体が連携した効果的な取組 研究Report</li>
+      <li><span class="wy">2025</span>アイレベル・ゲームガイド 日本版</li>
+      <li><span class="wy">2025</span>秋葉原ウォーカブルビジョン</li>
+      <li><span class="wy">2025</span>マーケットストリート社会実験2024 in 秋葉原ジャンク通り 調査報告書</li>
+      <li><span class="wy">2024</span>マーケットストリート社会実験2024 in 秋葉原ジャンク通り</li>
+      <li><span class="wy">2024</span>ナカメ未来ビジョン</li>
+      <li><span class="wy">2023</span>ウォーカブルシティ・国際シンポジウム2023</li>
+      <li><span class="wy">2023</span>秋葉原ウォーカブル基礎調査報告書</li>
+      <li><span class="wy">2023</span>下田市立地適正化計画</li>
+      <li><span class="wy">2023</span>たちきたエリアマネジメントビジョン Ver.0.5 Vision Book 2023</li>
+      <li><span class="wy">2023</span>中野駅周辺エリアマネジメントビジョン</li>
+      <li><span class="wy">2023</span>街なかマネジメント事業（プレイスメイキングうつのみや）支援業務報告書</li>
+      <li><span class="wy">2023</span>ストリートライフお茶の水調査報告書</li>
+      <li><span class="wy">2023</span>プレイスメイキング三軒茶屋2022年度活動報告書</li>
+      <li><span class="wy">2022</span>ストリートライフお茶の水</li>
+      <li><span class="wy">2022</span>令和3年度 下田市における歩車共存によるウォーカブルなまちの調査研究業務</li>
+      <li><span class="wy">2022</span>三条通デザインアイデアブック</li>
+      <li><span class="wy">2022</span>ササハタハツエリアビジョンブック</li>
+      <li><span class="wy">2022</span>竹芝Marine-Gateway Minatoビジョン</li>
+      <li><span class="wy">2021</span>Park(ing)Day2021神田</li>
+      <li><span class="wy">2021</span>中野駅周辺エリアマネジメント研究会 研究成果報告書</li>
+      <li><span class="wy">2021</span>Park(ing)Dayガイド</li>
+      <li><span class="wy">2021</span>プレイス・ゲーム｜プレイスメイキング・ガイド</li>
+      <li><span class="wy">2021</span>Placemaking Week JAPAN 2021</li>
+      <li><span class="wy">2021</span>南池袋二丁目B地区アーバンデザインプロジェクト研究成果報告書</li>
+      <li><span class="wy">2020</span>Park(ing)Day2020</li>
+      <li><span class="wy">2020</span>ストリートデザインガイドライン ―居心地が良く歩きたくなる街路づくりの参考書―</li>
+      <li><span class="wy">2019</span>Tactical Urbanism Japan 2019</li>
+      <li><span class="wy">2019</span>Park(ing)day2019渋谷宮益坂</li>
+      <li><span class="wy">2018</span>さいたま新都心エリアマネジメント検討プロジェクト</li>
+      <li><span class="wy">2018</span>渋谷中央街フェス2018・アクティビティ調査プロジェクト</li>
+      <li><span class="wy">2018</span>パブリックライフフェスさいたま新都心2018</li>
+      <li><span class="wy">2018</span>Park(ing)day2018Numazu</li>
+      <li><span class="wy">2018</span>竹芝ミライズ</li>
+      <li><span class="wy">2017</span>Shinjuku Street Seats</li>
+      <li><span class="wy">2017</span>美園マチなかロビー・滞留空間創出社会実験</li>
+      <li><span class="wy">2017</span>神田警察通り賑わい社会実験2017</li>
+      <li><span class="wy">2017</span>丸の内仲通り利活用アイデア実験祭</li>
+      <li><span class="wy">2017</span>渋谷中央街フェス2017・アクティビティ調査プロジェクト</li>
+      <li><span class="wy">2017</span>Park(ing)day2017OMIYA</li>
+      <li><span class="wy">2015</span>FLAT PARKあつぎ・サードプレイス社会実験</li>
+      <li><span class="wy">2015</span>池袋駅東口グリーン大通りオープンカフェ社会実験＆GREEN BLVD MARKET</li>
+      <li><span class="wy">2014</span>池袋駅東口グリーン大通りオープンカフェ社会実験（2014、2015春）</li>
+      <li><span class="wy">2010</span>高梁市歴史的風致維持向上計画</li>
+      <li><span class="wy">2009</span>姫路駅北駅前広場整備プロジェクト</li>
+    </ul>
+    <p class="note" style="margin-top:28px">researchmap「Works」より。</p>
+  </section>
+
+  <section id="papers">
+    <div class="sec-head"><h2>論文</h2><span>Papers</span></div>
+    <div class="filter" role="group" aria-label="論文の絞り込み">
+      <button type="button" id="f-all" data-f="all" aria-pressed="true">すべて</button>
+      <button type="button" id="f-ja" data-f="ja" aria-pressed="false">日本語</button>
+      <button type="button" id="f-en" data-f="en" aria-pressed="false">English</button>
+      <button type="button" id="f-first" data-f="first" aria-pressed="false">筆頭著者</button>
+    </div>
+    <div id="paperlist">
+<div class="year"><h3>2026</h3><ol><li class="paper" data-lang="en" data-first="1"><div class="t">Institutionalising Tactical Urbanism and Challenges to Permanent Parklets: A Comparative Institutional Analysis of Japan and San Francisco<span class="tag">掲載予定</span></div><div class="a"><b>Rui IZUMIYAMA</b>, So Fukatsu, Natsumi Harada, Takafumi Someya, Asahi Maeda</div><div class="j">The Journal of Public Space, 11(2), special issue on “Parklets, Temporary Uses and Co-creation of Public Space”</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">ウォーカブルシティ実現に向けた駐車場適正化の実態及び方策 ―ウォーカブル推進都市395自治体の現状把握及び類型別の対応検討―</div><div class="a">川崎海渡, 佐藤陸, 髙田悠真, 山之内陽起, <b>泉山塁威</b></div><div class="j">日本都市計画学会 都市計画論文集, 61(3)</div></li><li class="paper" data-lang="en" data-first="1"><div class="t">Beyond the Western paradigm: re-evaluating the 15-minute city through the lens of Japanese transit-oriented urbanism</div><div class="a"><b>Rui Izumiyama</b>, Hiroto Inamori, Zhou Zhiye, Taichi Saito, Shoki Tsuta</div><div class="j">Journal of Urbanism: International Research on Placemaking and Urban Sustainability, pp.1–5　<a href="https://doi.org/10.1080/17549175.2026.2709376">DOI</a></div></li><li class="paper" data-lang="en" data-first="1"><div class="t">Regulatory Sequencing and Placemaking: A Genealogy of Public Space Governance in Japan and Its Convergences with Global Urbanism (1998–2025)</div><div class="a"><b>Rui IZUMIYAMA</b>, Hiroto Inamori, Tomohiro Ueda, Ayaka Numasawa, Junhwan Song, Yoshihisa Oyabu</div><div class="j">Past Present and Future of Public Space, 6th International Conference, City Space Architecture, Bologna</div></li><li class="paper" data-lang="ja" data-first="1"><div class="t">日本のパークレット導入期における道路空間再編の実態及び制度的課題 ―サンフランシスコ市との比較分析を通じて―</div><div class="a"><b>泉山塁威</b>, 深津壮, 植田智大, 室田悠介, 宇於﨑勝也</div><div class="j">日本建築学会計画系論文集, 91(845), pp.1641–1651　<a href="https://doi.org/10.3130/aija.91.1641">DOI</a></div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">海外都市のパークレットにおける計画及び空間的特徴 ―米国カリフォルニア州サンフランシスコ市を対象として―<span class="tag">若手優秀研究報告賞</span></div><div class="a">植田智大, 室田悠介, 深津壮, 本田薫子, 山本夏海, <b>泉山塁威</b></div><div class="j">2025年度第96回日本建築学会関東支部研究発表会</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">「アイレベル空間」の特徴及び「歩行者が認識する地域の個性」の関係性 ―東京都中央区銀座地区を対象として―<span class="tag">優秀研究報告集</span></div><div class="a">松田晃太, 児玉陽斗, 原田夏実, <b>泉山塁威</b></div><div class="j">2025年度第96回日本建築学会関東支部研究発表会</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">Park-PFIを用いた都市公園における「市民セクター」の参画体制及び連携傾向<span class="tag">若手優秀研究報告賞</span></div><div class="a">菅原悠希, 本田薫子, 吉田薫澄, <b>泉山塁威</b></div><div class="j">2025年度第96回日本建築学会関東支部研究発表会</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">天神ビッグバン及び博多コネクティッドにおける建物更新の実態把握 ―2015-2025年の建物規模・用途・地価変動の記録―</div><div class="a">中村佳乃, 山之内陽起, 吉田薫澄, <b>泉山塁威</b></div><div class="j">福岡アジア都市研究所 研究紀要『都市政策研究』第27号</div></li></ol></div>
+<div class="year"><h3>2025</h3><ol><li class="paper" data-lang="ja" data-first="0"><div class="t">エリアマネジメント団体との連携有無からみたエリアプラットフォーム団体の特徴 ―全国74団体の分析及び事例研究を通して―</div><div class="a">小野寺瑞穂, 深津壮, 五味桃花, <b>泉山塁威</b></div><div class="j">日本都市計画学会 都市計画論文集, 60(3), pp.1345–1352　<a href="https://doi.org/10.11361/journalcpij.60.1345">DOI</a></div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">BID制度の段階的活用に向けた「実験的BID制度」によるエリアマネジメント手法の提案 ―シンガポールにおける「Pilot BID Programme」の仕組み及び成果の分析―</div><div class="a">深津壮, 小野寺瑞穂, <b>泉山塁威</b></div><div class="j">日本都市計画学会 都市計画論文集, 60(3), pp.579–586　<a href="https://doi.org/10.11361/journalcpij.60.579">DOI</a></div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">公共空間におけるマーケットの運営傾向及び配置計画の特徴 ―東京都23区のマーケット147事例の空間利用特性に基づく分析―</div><div class="a">児玉陽斗, 細矢瑞稀, 遠藤優奈, 福井勇仁, <b>泉山塁威</b></div><div class="j">日本都市計画学会 都市計画論文集, 60(3), pp.571–578　<a href="https://doi.org/10.11361/journalcpij.60.571">DOI</a></div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">東京都港区新虎通りにおける「アイレベル空間形成手法」及び留意点 ―「アイレベル空間施策」、空間的特徴及び利用者評価の分析を通して―</div><div class="a">松田晃太, 中村佳乃, 飛田龍佑, 森本あんな, <b>泉山塁威</b></div><div class="j">日本都市計画学会 都市計画論文集, 60(2), pp.211–224　<a href="https://doi.org/10.11361/journalcpij.60.211">DOI</a></div></li><li class="paper" data-lang="en" data-first="0"><div class="t">Influence of communication frequency between urban revitalization corporations and local governments on quality of community activities</div><div class="a">Misaki Ueno, <b>Rui Izumiyama</b>, Yusuke Yabutani, Junhwan Song, Yoshihiro Matsushita</div><div class="j">The International Real Estate Review, 27(4), pp.71–89</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">Park-PFIにおける公募対象公園施設の配置傾向及び施設計画の関係<span class="tag">優秀研究報告集</span></div><div class="a">鈴木雷真, 坂本愛佳, 竹中彩, 菅原悠希, 深津壮, <b>泉山塁威</b></div><div class="j">2024年度日本建築学会関東支部研究報告集</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">東京都23区における『マーケット』の開催と近隣地域の関係<span class="tag">優秀研究報告集</span></div><div class="a">細矢瑞稀, 児玉陽斗, 福井勇仁, 遠藤優奈, 深津壮, <b>泉山塁威</b></div><div class="j">2024年度日本建築学会関東支部研究報告集</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">都心商業地における交通及び滞留機能の関係性に基づく道路ネットワークの特徴 ―東京都港区新橋地区を対象として―<span class="tag">優秀研究論文集</span></div><div class="a">倉田晃輔, 佐野充季, <b>泉山塁威</b></div><div class="j">2024年度日本建築学会関東支部研究報告集</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">中心市街地における「Local Liveability Indicator」の適用に関する基礎的研究</div><div class="a">佐野充季, 福井勇仁, 染矢嵩文, <b>泉山塁威</b></div><div class="j">日本建築学会技術報告集, 31(77), pp.508–513</div></li></ol></div>
+<div class="year"><h3>2024</h3><ol><li class="paper" data-lang="ja" data-first="0"><div class="t">都市再生推進法人制度を活かした公民連携まちづくり推進のための課題整理 ―指定・継続に関わる手続きの運用状況および推進法人・行政間のコミュニケーション頻度に着目して―</div><div class="a">松下佳広, 宋俊煥, 籔谷祐介, 上野美咲, 木原一郎, <b>泉山塁威</b>, 小林敏樹</div><div class="j">日本都市計画学会 都市計画論文集</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">大都市都心部のエリアマネジメントにおける「ビジョンマネジメント」の実態及び方法論</div><div class="a">一之瀬大雅, 小野寺瑞穂, <b>泉山塁威</b>, 宇於﨑勝也</div><div class="j">日本都市計画学会 都市計画論文集, 59(3)</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">全国45公園におけるPark-PFIの適用傾向及び課題</div><div class="a">菅原悠希, 久志木ひま梨, 竹中彩, 一之瀬大雅, <b>泉山塁威</b></div><div class="j">日本都市計画学会 都市計画論文集, 59(3), pp.1636–1643</div></li><li class="paper" data-lang="en" data-first="1"><div class="t">Characteristics and Challenges of Japanese Parklets: An International Comparative Study on the Transition from Temporary to Permanent Installations<span class="tag">Best Abstract Proposal</span></div><div class="a"><b>Rui IZUMIYAMA</b>, Yohei IKAI, Yuya ISHIDA, Takafumi SOMEYA, Soichiro HARADA, Natsumi HARADA, So FUKATSU, Asahi MAEDA</div><div class="j">Proceedings of International Parklet Symposium 2024</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">駐車場の地域ルールの運用実態と課題に関する研究 ―東京都の業務地区の事例分析から―</div><div class="a">宇於﨑勝也, <b>泉山塁威</b></div><div class="j">日本都市計画学会 都市計画論文集, 59(1), pp.36–42　<a href="https://doi.org/10.11361/journalcpij.59.36">DOI</a></div></li></ol></div>
+<div class="year"><h3>2023</h3><ol><li class="paper" data-lang="ja" data-first="0"><div class="t">「防災道の駅」の現状と今後の整備の方向性 ―選定要件の充足状況と駐車場規模に着目して―</div><div class="a">宇於崎勝也, <b>泉山塁威</b></div><div class="j">日本建築学会技術報告集</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">歩車共存に向けた車道占用による空間活用実験の成果と課題 ―Park(ing)Day2021 神田を事例として―</div><div class="a">中島伸, <b>泉山塁威</b>, 菅原遼, 森本あんな, 一之瀬大雅, 小野寺瑞穂, 飛田龍佑, 原唯菜</div><div class="j">日本都市計画学会 都市計画論文集</div></li><li class="paper" data-lang="ja" data-first="1"><div class="t">道路占用許可関連制度の網羅的傾向と変遷からみた緩和規定の特徴及び課題 ―道路占用許可の特例、国家戦略道路占用事業及び道路協力団体制度を対象として―</div><div class="a"><b>泉山塁威</b>, 宇於﨑勝也</div><div class="j">日本建築学会計画系論文集, 88(804), pp.568–579</div></li></ol></div>
+<div class="year"><h3>2022</h3><ol><li class="paper" data-lang="ja" data-first="0"><div class="t">ウォーカブル推進に向けた計画・事業及び指標に関する傾向 ―まちなかウォーカブル区域指定の53自治体の分析を通じて―</div><div class="a">森本あんな, 薄井まどか, <b>泉山塁威</b>, 宇於﨑勝也</div><div class="j">日本都市計画学会 都市計画論文集, 57(3), pp.606–613</div></li><li class="paper" data-lang="ja" data-first="1"><div class="t">公共空間におけるバスカー制度の可能性と課題 ―東京都「ヘブンアーティスト事業」、柏市「ストリートミュージシャン登録制度」及びメルボルン市「Busking Permits」との比較を通じて―</div><div class="a"><b>泉山塁威</b>, 猪飼洋平, 松川真友子</div><div class="j">日本建築学会計画系論文集, 87(800)</div></li></ol></div>
+<div class="year"><h3>2021</h3><ol><li class="paper" data-lang="ja" data-first="0"><div class="t">新型コロナウイルス感染症影響下における屋外空間の利用動向</div><div class="a">湯淺かさね, 宋俊煥, <b>泉山塁威</b>, 三浦詩乃, 村上早紀子</div><div class="j">日本建築学会計画系論文集, 86(790)</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">都心部におけるストリートマネジメント実現に向けての主体形成及び醸成に関する研究</div><div class="a">野原卓, 宋俊煥, <b>泉山塁威</b>, 木原一郎</div><div class="j">日本都市計画学会 都市計画論文集, 56(1), pp.201–216　<a href="https://doi.org/10.11361/journalcpij.56.201">DOI</a></div></li></ol></div>
+<div class="year"><h3>2020</h3><ol><li class="paper" data-lang="ja" data-first="0"><div class="t">エリアマネジメント団体の雇用形態からみた事務局人材と活動特性の傾向分析</div><div class="a">宋俊煥, 籔谷祐介, <b>泉山塁威</b>, 保井美樹</div><div class="j">日本都市計画学会 都市計画論文集, 55(3), pp.821–828　<a href="https://doi.org/10.11361/journalcpij.55.821">DOI</a></div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">生きづらさを抱えた人の居場所づくりを通じた支援の実態と可能性</div><div class="a">高階麻美, 後藤智香子, 新雄太, 近藤早映, <b>泉山塁威</b>, 吉村有司, 小泉秀樹</div><div class="j">日本都市計画学会 都市計画論文集, 55(3), pp.968–975</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">Study on the Significance of Derivation between Community-Based Organizations as Seen from Development History of Sungmi-san Village in South Korea</div><div class="a">梁イェリム, 後藤智香子, <b>泉山塁威</b>, 近藤早映, 新雄太, 小泉秀樹</div><div class="j">日本建築学会計画系論文集, 85(773), pp.1503–1512　<a href="https://doi.org/10.3130/aija.85.1503">DOI</a></div></li><li class="paper" data-lang="en" data-first="0"><div class="t">Research on the relationship between human retention behavior and solar radiation and wind environment in public open space</div><div class="a">Kaoru MATSUO, <b>Rui IZUMIYAMA</b>, Shihona ARAI, Yusuke HORIE, Akiko TANIMURA, Riki NOMOTO</div><div class="j">The Journal of Public Space, 5(2), pp.111–128</div></li></ol></div>
+<div class="year"><h3>2019</h3><ol><li class="paper" data-lang="ja" data-first="0"><div class="t">都市利便増進協定を活用した、公民連携による公共空間マネジメントの可能性と課題に関する研究</div><div class="a">松下佳広, <b>泉山塁威</b>, 小泉秀樹</div><div class="j">日本都市計画学会 都市計画論文集, 54(3), pp.441–448</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">全国の都市公園における公募を通じた収益施設の設置実態と立地条件の関係</div><div class="a">山崎嵩拓, 宋俊煥, <b>泉山塁威</b>, 横張真</div><div class="j">日本都市計画学会 都市計画論文集, 54(2), pp.136–143</div></li><li class="paper" data-lang="ja" data-first="0"><div class="t">道路空間における滞在のための設えと活動 ―宇都宮市オリオン通りオープンカフェの実践を通して―</div><div class="a">安森亮雄, 渡邉翼, <b>泉山塁威</b></div><div class="j">日本建築学会技術報告集, 25(59), pp.337–342　<a href="https://doi.org/10.3130/aijt.25.337">DOI</a></div></li></ol></div>
+<div class="year"><h3>2018</h3><ol><li class="paper" data-lang="ja" data-first="0"><div class="t">「設置管理許可制度」を用いたパークマネジメントにおける設置管理事業者の関与実態に関する研究</div><div class="a">宋俊煥, 山崎嵩拓, <b>泉山塁威</b></div><div class="j">日本建築学会計画系論文集, 84(760), pp.1295–1304　<a href="https://doi.org/10.3130/aija.84.1295">DOI</a></div></li></ol></div>
+</div>
+    <p class="note" style="margin-top:28px">researchmap「論文」より。最新の業績は <a href="https://researchmap.jp/ruilouis/published_papers">researchmap</a> をご覧ください。</p>
+  </section>
+
+  <section id="books">
+    <div class="sec-head"><h2>著書</h2><span>Books</span></div>
+    <ul class="books">
+      <li><span class="y">2025</span><span class="b">プレイスメイキング・ハンドブック</span><span class="p">学芸出版社</span></li>
+      <li><span class="y">2024</span><span class="b">都市の「見える化」でまちが変わる</span><span class="p">エクスナレッジ</span></li>
+      <li><span class="y">2023</span><span class="b">パブリックスペース活用事典</span><span class="p">学芸出版社</span></li>
+      <li><span class="y">2023</span><span class="b">タクティカル・アーバニズム・ガイド</span><span class="p">晶文社（監修）</span></li>
+      <li><span class="y">2021</span><span class="b">タクティカル・アーバニズム</span><span class="p">学芸出版社（編著）</span></li>
+      <li><span class="y">2021</span><span class="b">エリアマネジメント・ケースメソッド</span><span class="p">学芸出版社（編著）</span></li>
+      <li><span class="y">2020</span><span class="b">楽しい公共空間をつくるレシピ</span><span class="p">ユウブックス（編著）</span></li>
+      <li><span class="y">2020</span><span class="b">The City at Eye Level Asia</span><span class="p">STIPO Publishing</span></li>
+      <li><span class="y">2019</span><span class="b">ストリートデザイン・マネジメント</span><span class="p">学芸出版社（共著）</span></li>
+      <li><span class="y">2019</span><span class="b">アナザーユートピア</span><span class="p">NTT出版（共著）</span></li>
+    </ul>
+  </section>
+
+  <section id="awards">
+    <div class="sec-head"><h2>受賞</h2><span>Awards</span></div>
+    <dl class="awards">
+        <dt>2025</dt><dd>第48回日本大学理工学部学術賞 学会・協会賞<span class="org">日本大学理工学部｜enで紡ぐ東静岡</span></dd>
+        <dt>2025</dt><dd>Area Management Research Award 2025 研究報告部門<span class="org">全国エリアマネジメントネットワーク、エリアマネジメント研究交流会</span></dd>
+        <dt>2024</dt><dd>まちづくりアイデアコンペ in 東静岡 都市デザイン部門 学生未来賞<span class="org">静岡市｜enで紡ぐ東静岡</span></dd>
+        <dt>2024</dt><dd>第47回日本大学理工学部学術賞 学会・協会賞<span class="org">日本大学理工学部｜地域特性からみたエリアプラットフォームの組織及び活動の特徴</span></dd>
+        <dt>2024</dt><dd>International Parklet Symposium 2024 Best Abstract Proposal<span class="org">Bela Urbanism ほか｜Characteristics and Challenges of Japanese Parklets</span></dd>
+        <dt>2023</dt><dd>第46回日本大学理工学部学術賞 学会・協会賞<span class="org">日本大学理工学部</span></dd>
+        <dt>2023</dt><dd>Area Management Research Award 2023 調査報告部門<span class="org">エリアマネジメント研究交流会｜地域特性からみたエリアプラットフォームの組織及び活動の特徴</span></dd>
+        <dt>2022</dt><dd>第45回日本大学理工学部学術賞 学会・協会賞（3点）<span class="org">日本大学理工学部</span></dd>
+        <dt>2022</dt><dd>Area Management Research Award 2022 研究報告部門<span class="org">エリアマネジメント研究交流会｜エリアビジョンの策定プロセス及び将来像実現に向けた取り組みの傾向</span></dd>
+        <dt>2022</dt><dd>マチミチコンペ in 大宮ウォーカブルシティ 入賞<span class="org">さいたま市｜Connect 〜“大宮らしさ”で生む繋がり〜</span></dd>
+        <dt>2021</dt><dd>「編集部が選ぶ建築人2021」選出<span class="org">日経アーキテクチュア｜建築界の常識を断ってブレークスルー</span></dd>
+        <dt>2021</dt><dd>グッドデザイン賞2021<span class="org">公益財団法人日本デザイン振興会｜路上駐車スペース活用の普及啓発活動［Park(ing)Day Japan］</span></dd>
+        <dt>2021</dt><dd>グッドデザイン賞2021<span class="org">公益財団法人日本デザイン振興会｜公共空間の変革に向けた普及啓発</span></dd>
+        <dt>2020</dt><dd>「編集部が選ぶ10大建築人」選出<span class="org">日経アーキテクチュア</span></dd>
+        <dt>2014</dt><dd>黒石市「こみせ」再生提案競技 保全修理部門 優秀賞<span class="org">黒石市｜こみせマネジメントのデザイン</span></dd>
+        <dt>2013</dt><dd>学生まちづくりコンペティション2013 商品企画部門 優秀賞<span class="org">株式会社まちづくりとやま｜neo Marche.（ネオマルシェ）</span></dd>
+        <dt>2007</dt><dd>第9回提案競技「美しくまちをつくる、むらをつくる」まちづくり提案の部 神崎町長賞<span class="org">日本建築学会関東支部｜ママまちづくり</span></dd>
+      </dl>
+  </section>
+
+  <section id="media">
+    <div class="sec-head"><h2>メディア</h2><span>Media</span></div>
+    <p class="outlets">ABEMA Prime／TOKYO MX／日本経済新聞／読売新聞／Forbes JAPAN／東洋経済／商店建築／東京人／D'LIVE（韓国）ほか</p>
+    <ul class="medialist">
+      <li><time>2026.07</time><div><div class="mt"><a href="https://www.yomiuri.co.jp/local/tokyo23/news/20260720-GYTNT00261/">街の魅力、活用策語る ひじりばし博覧会2026 座談会や朗読会で</a></div><div class="mm">読売新聞</div></div></li><li><time>2026.07</time><div><div class="mt"><a href="https://www.tokyo-np.co.jp/article/501412">アメ横周辺の路上にテーブルやいす…飲食店主ら書類送検 道路不正利用疑い 常態化に苦情相次ぎ</a></div><div class="mm">東京新聞</div></div></li><li><time>2026.01</time><div><div class="mt">道路空間の活用でまちはおもしろくなる</div><div class="mm">東京人 2026年2月号 特集「まちの隙間、暮らしの余白」</div></div></li><li><time>2025.12</time><div><div class="mt"><a href="https://www.youtube.com/watch?v=YAne1BA7UHA">都市の贈り物、公開空地（도시의 선물, 공개공지）</a></div><div class="mm">D&#x27;LIVE 딜라이브 다큐</div></div></li><li><time>2025.09</time><div><div class="mt"><a href="https://greenz.jp/2025/09/16/workforgood_sotonoba/">屋外空間を通じて、“豊かな日常”をつくる。パブリックスペースの可能性を探究する「ソトノバ」の仕事</a></div><div class="mm">greenz</div></div></li><li><time>2024.10</time><div><div class="mt">都市を「つくり変える」には首長のリーダーシップがカギ</div><div class="mm">日経グローカル 493号</div></div></li><li><time>2023.11</time><div><div class="mt"><a href="https://www.yomiuri.co.jp/local/kansai/news/20231102-OYO1T50031/">「裏天満」の客席が公道塞ぐ、「不法占拠」是正指導…東京浅草・福岡中洲でも</a></div><div class="mm">読売新聞</div></div></li><li><time>2023.10</time><div><div class="mt"><a href="https://bootleg.co.jp/news/2023/09/11/tattva-vol9/">アートアーバニズムは持続可能か 深井厚志 × 泉山塁威</a></div><div class="mm">季刊誌『tattva』Vol.9</div></div></li><li><time>2023.10</time><div><div class="mt">駅とホール間にバスを 苫小牧 北大院・森教授が講演</div><div class="mm">北海道新聞</div></div></li><li><time>2023.08</time><div><div class="mt">巻頭インタビュー「地域を豊かにする道路空間の構築に向けて」</div><div class="mm">月刊道路 8月号</div></div></li><li><time>2023.04</time><div><div class="mt"><a href="https://news.yahoo.co.jp/articles/ea979cde400b04f045a6b7c084520de8d4207f9a">駅の“休憩スペース”は誰のもの？ 若者＆中高年の迷惑行為で一部閉鎖に…専門家が指摘する問題点</a></div><div class="mm">Yahoo!ニュース</div></div></li><li><time>2023.04</time><div><div class="mt"><a href="https://abema.tv/video/episode/89-66_s99_p4685">#アベプラ「公共スペースが迷惑行為で閉鎖 ルールの厳格化は難しい？あり方を考える」</a></div><div class="mm">ABEMA Prime</div></div></li><li class="more-item" hidden><time>2023.04</time><div><div class="mt"><a href="https://shotenkenchiku.com/products/detail.php?product_id=432">JCDデザインシンポジウム SECTION 63「BOUNDARY 越境するクリエイティブ」谷尻誠、山田能資、泉山塁威</a></div><div class="mm">商店建築 2023年4月号</div></div></li><li class="more-item" hidden><time>2023.03</time><div><div class="mt"><a href="https://note-moonshot.jst.go.jp/n/n1bd6cf429ca7">Making Weather Control a Reliable Part of “City Infrastructure”: A Tag Team of Technology and Social Systems – Yohei Sawada x Rui Izumiyama</a></div><div class="mm">Moonshot (JST) note</div></div></li><li class="more-item" hidden><time>2023.02</time><div><div class="mt"><a href="https://note-moonshot.jst.go.jp/n/n295cb6cf7d1c">気象制御が、信頼できる“まちのインフラ”になるには？ 技術と社会制度の両輪から考える 澤田洋平×泉山塁威</a></div><div class="mm">ムーンショット（JST）note</div></div></li><li class="more-item" hidden><time>2022.11</time><div><div class="mt"><a href="https://prtimes.jp/main/html/rd/p/000000103.000031879.html">進む公開空地の商業利用、鍵は行政の規制緩和。</a></div><div class="mm">株式会社Mellow／SHOP STOP</div></div></li><li class="more-item" hidden><time>2022.03</time><div><div class="mt"><a href="https://www.uraja.or.jp/book/cic/">鼎談 ウィズコロナにおける働き方の変容と魅力的なまちづくり（馬場正尊、山崎満弘、泉山塁威）</a></div><div class="mm">全国市街地再開発協会</div></div></li><li class="more-item" hidden><time>2022.02</time><div><div class="mt"><a href="https://wisdom.nec.com/ja/series/future/2022022401/index.html">まちづくりの新たな「コモニング」を可能にする、市民参加のためのタクティカル・アーバニズム</a></div><div class="mm">NEC未来創造会議</div></div></li><li class="more-item" hidden><time>2022.01</time><div><div class="mt"><a href="https://hokomichi.mlit.go.jp/post-220/">「ほこみち」から「面白いまちづくり」へ！ 歩くことが楽しくなる道路の活用方法とは？</a></div><div class="mm">国土交通省 ほこみち研究会</div></div></li><li class="more-item" hidden><time>2021.12</time><div><div class="mt"><a href="https://mainichi.jp/articles/20211214/ddl/k09/100/123000c">「プレみや」始動、関係者に聞く 公共空間の活用法、探る</a></div><div class="mm">毎日新聞（栃木）</div></div></li><li class="more-item" hidden><time>2021.12</time><div><div class="mt">公共空間を利用した、にぎわいづくり</div><div class="mm">東京人 2022年2月号</div></div></li><li class="more-item" hidden><time>2021.11</time><div><div class="mt">空き地有効活用利用を</div><div class="mm">室蘭民報</div></div></li><li class="more-item" hidden><time>2021.09</time><div><div class="mt"><a href="https://www.tama-mirai.org/program/06/01/">“身近な目的地”が点在するウォーカブルシティ</a></div><div class="mm">多摩未来協創会議</div></div></li><li class="more-item" hidden><time>2021.08</time><div><div class="mt"><a href="https://www.nikkei.com/article/DGKKZO74751530T10C21A8MY6000/">（短評）『タクティカル・アーバニズム』泉山塁威ほか編著</a></div><div class="mm">日本経済新聞</div></div></li><li class="more-item" hidden><time>2021.06</time><div><div class="mt"><a href="https://workmill.jp/webzine/20210629-tacticalurbanism-office-2.html">コロナ後も愛される場の条件とは ― 都市戦術家と働き方研究者が対談</a></div><div class="mm">WORKMILL</div></div></li><li class="more-item" hidden><time>2021.06</time><div><div class="mt"><a href="https://workmill.jp/webzine/tacticalurbanism-office-1.html">泉山塁威さんと語る、タクティカル・アーバニズムとコロナ後のオフィス</a></div><div class="mm">WORKMILL</div></div></li><li class="more-item" hidden><time>2021.06</time><div><div class="mt"><a href="https://www.sogo-unicom.co.jp/leisure/mag/202106.html">企業がまちと関わっていくチャンス 長期的な価値創出を見据え地域貢献にとどまらない取組みを</a></div><div class="mm">月刊レジャー産業資料</div></div></li><li class="more-item" hidden><time>2021.01</time><div><div class="mt"><a href="https://somemore-jp.com/content/interview/2021/01/29/2409/">somemore people VOL.8 泉山塁威（2） 自分のこだわりに出会うために</a></div><div class="mm">somemore</div></div></li><li class="more-item" hidden><time>2021.01</time><div><div class="mt"><a href="https://somemore-jp.com/content/interview/2021/01/22/2407/">somemore people VOL.8 泉山塁威（1） 小さなアクションから、都市を変えていく</a></div><div class="mm">somemore</div></div></li><li class="more-item" hidden><time>2020.12</time><div><div class="mt">編集部が選ぶ建築人2021</div><div class="mm">日経アーキテクチュア</div></div></li><li class="more-item" hidden><time>2020.12</time><div><div class="mt"><a href="https://fnmnl.tv/2020/12/08/111868">ストリートモールが文化をつくる 人中心の商業施設</a></div><div class="mm">FNMNL</div></div></li><li class="more-item" hidden><time>2020.11</time><div><div class="mt"><a href="https://s.mxtv.jp/genki/index.html?theme_number=60">もっと『新しい日常』の中で商店街が元気になるために！</a></div><div class="mm">TOKYO MX</div></div></li><li class="more-item" hidden><time>2020.09</time><div><div class="mt">渋谷区／玉川上水旧水路緑道再整備で区民会議／85人が将来の姿を議論</div><div class="mm">建設通信新聞</div></div></li><li class="more-item" hidden><time>2020.09</time><div><div class="mt"><a href="https://www.nikkei.com/article/DGXMZO63949980X10C20A9940M00/">首都圏で広がるテラス営業、飲食店ににぎわいを</a></div><div class="mm">日本経済新聞</div></div></li><li class="more-item" hidden><time>2020.09</time><div><div class="mt"><a href="https://forbesjapan.com/articles/detail/37008/1/1/1">過密都市・東京で「社会的距離」を保つには？ 海外に学ぶ街づくり最前線</a></div><div class="mm">Forbes JAPAN</div></div></li><li class="more-item" hidden><time>2020.09</time><div><div class="mt"><a href="https://forbesjapan.com/articles/detail/36861">ウィズコロナ時代に住みたい街は？ 「緑の山手線」エリア人気上昇中</a></div><div class="mm">Forbes JAPAN</div></div></li><li class="more-item" hidden><time>2020.09</time><div><div class="mt"><a href="https://www.kirin.co.jp/csv/well-being/future/hint/36.html">コロナによって変わるライフスタイルと都市 ～泉山塁威（るい）さんに聞く～</a></div><div class="mm">Kirin Well-being Design Lab</div></div></li><li class="more-item" hidden><time>2020.09</time><div><div class="mt"><a href="https://forbesjapan.com/articles/detail/36777">商店街に希望？ 新型コロナで「半径500mのつながり」が再評価</a></div><div class="mm">Forbes JAPAN</div></div></li><li class="more-item" hidden><time>2020.09</time><div><div class="mt"><a href="https://www.shotenkenchiku.com/products/detail.php?product_id=368">「都市の公共性、ユニクロの公共性」商業空間は公共性を持つか 5</a></div><div class="mm">商店建築</div></div></li><li class="more-item" hidden><time>2020.08</time><div><div class="mt"><a href="https://www.kyoto-np.co.jp/articles/-/326526">広がる飲食店のオープンテラス 「3密」回避し路上に商機、国が占有基準緩和</a></div><div class="mm">京都新聞</div></div></li><li class="more-item" hidden><time>2020.08</time><div><div class="mt"><a href="https://shop.re-port.net/fudosanryutsu/202009/">エリアマネジメント研究を基礎に、パブリックスペース利活用を促進へ。実践の場づくりで人材育成も</a></div><div class="mm">不動産流通 2020年9月号</div></div></li><li class="more-item" hidden><time>2020.07</time><div><div class="mt"><a href="https://forbesjapan.com/articles/detail/36020">【対談】ウィズコロナの都市デザイン考 ピクトグラムの源流はスペイン風邪だった</a></div><div class="mm">Forbes JAPAN</div></div></li><li class="more-item" hidden><time>2020.07</time><div><div class="mt"><a href="https://toyokeizai.net/articles/-/360559">「飲食店の路上利用緩和」ができない街の末路 単なる飲食店救助策と捉えると見誤る</a></div><div class="mm">東洋経済オンライン</div></div></li><li class="more-item" hidden><time>2020.06</time><div><div class="mt">コロナで消える昭和 ロケ地に幕</div><div class="mm">産経新聞</div></div></li><li class="more-item" hidden><time>2020.05</time><div><div class="mt"><a href="http://shhfan.com/mrizumiyama.html/">ササハタハツエリアの可能性 ―ササハタハツ（仮称）まちラボフューチャーセッション参加を通じて―</a></div><div class="mm">ササハタハツ新聞</div></div></li><li class="more-item" hidden><time>2020.03</time><div><div class="mt"><a href="https://project.nikkeibp.co.jp/atclppp/PPP/report/032500231/">水辺活用のトレンドを10のキーワードで解説 「MIZBERING FORUM 2020220」リポート</a></div><div class="mm">日経BP 新・公民連携最前線</div></div></li><li class="more-item" hidden><time>2020.03</time><div><div class="mt">広場の可能性は住民が広げる</div><div class="mm">RE EDIT</div></div></li><li class="more-item" hidden><time>2020.01</time><div><div class="mt"><a href="https://www.magazine.mlit.go.jp/interview/vol14-b-2/">「街路」の基準づくりが都市を変える（GRASP vol.14「道」が変わる！新たなチャレンジ 後編）</a></div><div class="mm">国土交通省 GRASP</div></div></li><li class="more-item" hidden><time>2020.01</time><div><div class="mt"><a href="https://www.magazine.mlit.go.jp/interview/vol14-b-1/">「道路空間の新しい姿」へ時代が動く（GRASP vol.14「道」が変わる！新たなチャレンジ 前編）</a></div><div class="mm">国土交通省 GRASP</div></div></li><li class="more-item" hidden><time>2019.12</time><div><div class="mt"><a href="https://blogos.com/article/425858/">「広場」が都市を変える？ イベントで賑わう街・渋谷で始まる新たな試み</a></div><div class="mm">BLOGOS</div></div></li><li class="more-item" hidden><time>2019.12</time><div><div class="mt"><a href="https://erimane.com/interview-sotonoba/">タクティカル・アーバニズムでまちをアップデートする</a></div><div class="mm">エリマネポータル</div></div></li><li class="more-item" hidden><time>2019.10</time><div><div class="mt"><a href="https://greenz.jp/2019/10/03/tactical_urbanism/">公共空間で遊ぼう！ タクティカル・アーバニズムの事例から学ぶ、ほしいパブリックスペースのつくり方</a></div><div class="mm">greenz</div></div></li><li class="more-item" hidden><time>2019.06</time><div><div class="mt"><a href="https://sotonoba.place/techcity-publicspace">Society5.0時代における都市とテクノロジーが共存する政策とアーバニズム</a></div><div class="mm">日本規格協会 JSA GROUP Webdesk</div></div></li><li class="more-item" hidden><time>2019.05</time><div><div class="mt"><a href="https://suumo.jp/journal/2019/05/09/164059/">日本に「オープンカフェ」が少ない理由って？ “住みたい街”の条件が見えてきた</a></div><div class="mm">SUUMOジャーナル</div></div></li>
+    </ul>
+    <button type="button" class="showall" id="media-more">すべて表示（54件）</button>
+    <p class="note" style="margin-top:20px">researchmap「メディア報道」より。</p>
+  </section>
+
+  <section id="kit">
+    <div class="sec-head"><h2>メディアキット</h2><span>Media Kit</span></div>
+    <p>講演会・シンポジウムのチラシ、取材記事などにご利用ください。プロフィールは用途に合わせて、下記の文章をそのままお使いいただけます。</p>
+    <div class="kit">
+      <div class="bios">
+        <div class="bio">
+        <div class="bio-h"><h3>プロフィール（400字版）</h3><span class="n">457字</span><button type="button" class="copy" data-target="bio-400">コピー</button></div>
+        <p id="bio-400">都市戦術家（Tactical Urbanist）。日本大学理工学部建築学科准教授（都市計画研究室・泉山ゼミ主宰）、一般社団法人ソトノバ共同代表理事・編集長、PlacemakingX日本リーダー。博士（工学）。1984年札幌市生まれ。タクティカル・アーバニズム、プレイスメイキング、エリアマネジメント、ウォーカブルシティを軸に、パブリックスペースから都市を変える研究と実践を横断する。パークレットやほこみち等の道路空間再編に関する研究を国内外で展開し、International Parklet Symposium 2024 Best Abstract Proposal、Area Management Research Award（2025,2023,2022）、グッドデザイン賞2021（W受賞）等を受賞。日経アーキテクチュア「編集部が選ぶ建築人2021」選出。主な著書に『プレイスメイキングハンドブック』（2025）、『パブリックスペース活用事典』（2023）、『タクティカル・アーバニズム』（2021）など。</p>
+      </div>
+        <div class="bio">
+        <div class="bio-h"><h3>プロフィール（250字版）</h3><span class="n">241字</span><button type="button" class="copy" data-target="bio-250">コピー</button></div>
+        <p id="bio-250">都市戦術家（Tactical Urbanist）。日本大学理工学部建築学科准教授、一般社団法人ソトノバ共同代表理事・編集長、PlacemakingX日本リーダー。博士（工学）。タクティカル・アーバニズム、プレイスメイキング、エリアマネジメント、ウォーカブルシティなど、パブリックスペースを起点とした都市デザインの研究と実践を横断する。主な著書に『プレイスメイキングハンドブック』『パブリックスペース活用事典』『タクティカル・アーバニズム』など。グッドデザイン賞2021ほか受賞多数。</p>
+      </div>
+        <div class="bio">
+        <div class="bio-h"><h3>Profile (English)</h3><span class="n">97words</span><button type="button" class="copy" data-target="bio-en">コピー</button></div>
+        <p id="bio-en">Rui Izumiyama is an urban planner, urban designer, and self-described “pracademic” — a tactical urbanist who moves between academic research and on-the-ground practice to transform cities through public space. Alongside leading the Urban Design and Planning Lab at Nihon University, he co-directs Sotonoba, Japan&#x27;s leading media platform and community dedicated to public space, and serves as the Japan leader of PlacemakingX, the global placemaking network. Over the past decade he has given more than 700 lectures for local governments, companies, and industry associations, with media appearances including ABEMA PRIME, Nikkei, Yomiuri Shimbun, Forbes JAPAN, and Toyo Keizai.</p>
+      </div>
+      </div>
+      <div class="photos">
+        <h3>プロフィール写真</h3>
+        <div class="ph-grid">
+          <figure><div class="ph" style="--tone:#2f4a3a"><img src="images/profile-green.jpg" alt="泉山塁威 プロフィール写真（緑ジャケット）" onerror="this.remove()"></div><figcaption>緑ジャケット／Photo by Kazue Kawase</figcaption></figure>
+          <figure><div class="ph" style="--tone:#3a3f46"><img src="images/profile-2.jpg" alt="泉山塁威 プロフィール写真" onerror="this.remove()"></div><figcaption>横位置</figcaption></figure>
+        </div>
+        <a class="go" href="https://www.dropbox.com/sh/b0jalwih5l8x3ln/AAA36dSNQ_JIZXLAUp6RpFm9a?dl=0">写真をダウンロード（高解像度）</a>
+        <ul class="rules">
+          <li>トリミングはOKですが、画像の上に文字を乗せる、色を変えるなどの画像加工はお控えください。</li>
+          <li>緑ジャケットの写真にはクレジット（Photo by kazue kawase）を記載ください。</li>
+          <li>各種バージョンのプロフィール・CVは<a href="https://ruilouis.notion.site/CV-84fb4c6291fa4c2dbe1286403184cb72">こちら</a>。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="sec-head"><h2>お問い合わせ</h2><span>Contact</span></div>
+    <div class="cols">
+      <div>
+        <p>講演・研修、取材・メディア出演、共同研究・受託研究、大学院進学や研究生のご相談は、フォームからお送りください。</p>
+        <a class="go" href="https://tayori.com/form/94373086bae03cf14b9b31da97629b976368d572">お問い合わせフォーム</a>
+      </div>
+      <div class="links">
+        <a href="https://urbandesignplanning.jp/izumiyama/">泉山ゼミ</a>
+        <a href="https://sotonoba.place/">ソトノバ</a>
+        <a href="https://researchmap.jp/ruilouis">researchmap</a>
+        <a href="https://scholar.google.com/citations?user=dQZv19sAAAAJ">Google Scholar</a>
+        <a href="https://orcid.org/0000-0001-9466-5481">ORCID</a>
+        <a href="https://note.com/ruilouis">note</a>
+        <a href="https://x.com/RuiIZUMIYAMA">X</a>
+        <a href="https://www.instagram.com/ruilouis/">Instagram</a>
+        <a href="https://www.linkedin.com/in/ruiizumiyama/">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer><span>© Rui Izumiyama</span><span>ruiizumiyama.jp</span></footer>
+</div>
+
+<script>
+const papers=[...document.querySelectorAll('#paperlist .paper')];
+function render(f){
+  papers.forEach(p=>{p.hidden=!(f==='all'||(f==='first'&&p.dataset.first==='1')||p.dataset.lang===f);});
+  document.querySelectorAll('#paperlist .year').forEach(y=>{y.hidden=![...y.querySelectorAll('.paper')].some(p=>!p.hidden);});
+}
+document.querySelectorAll('.filter button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filter button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  render(b.dataset.f);
+}));
+</script>
+
+</body>
+</html>
